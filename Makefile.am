@@ -495,6 +495,7 @@ include prov/opx/Makefile.include
 include prov/shm/Makefile.include
 include prov/sm2/Makefile.include
 include prov/tcp/Makefile.include
+include prov/qdma_tcp/Makefile.include
 include prov/ucx/Makefile.include
 include prov/lpp/Makefile.include
 include prov/lnx/Makefile.include

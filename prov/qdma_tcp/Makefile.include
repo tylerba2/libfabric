@@ -1,0 +1,19 @@
+if HAVE_QDMA_TCP
+_qdma_tcp_files = \
+	../qdma_tcp.c \
+	../qdma_tcp.h
+
+# qdma_tcp.c includes "qdma_tcp.h" which currently lives at the repo root
+# (one directory above the libfabric/ tree). Add an include path so the
+# provider can be built without copying sources into the libfabric tree.
+AM_CPPFLAGS += -I$(top_srcdir)/..
+
+# NOTE:
+# qdma_tcp currently depends on internal tcp provider symbols (xnet_util_prov),
+# which are not available when tcp is built as a DSO. We therefore only build
+# qdma_tcp as a built-in provider (part of libfabric), not as a plugin.
+src_libfabric_la_SOURCES += $(_qdma_tcp_files)
+
+prov_dist_man_pages += man/man7/fi_qdma_tcp.7
+
+endif HAVE_QDMA_TCP
