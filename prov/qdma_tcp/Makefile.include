@@ -1,12 +1,7 @@
 if HAVE_QDMA_TCP
 _qdma_tcp_files = \
-	../qdma_tcp.c \
-	../qdma_tcp.h
-
-# qdma_tcp.c includes "qdma_tcp.h" which currently lives at the repo root
-# (one directory above the libfabric/ tree). Add an include path so the
-# provider can be built without copying sources into the libfabric tree.
-AM_CPPFLAGS += -I$(top_srcdir)/..
+	prov/qdma_tcp/src/qdma_tcp.c \
+	prov/qdma_tcp/src/qdma_tcp.h
 
 # NOTE:
 # qdma_tcp currently depends on internal tcp provider symbols (xnet_util_prov),
